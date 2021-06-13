@@ -72,7 +72,7 @@ const addBooksHandler = (request, h) => {
 };
 
 const getAllBooks = (request, h) => {
-  let {name, reading, finished} = request.query
+  let { name, reading, finished } = request.query;
   let bookList = books.map((book) => {
     const { id, name, publisher, reading, finished } = book;
 
@@ -80,22 +80,22 @@ const getAllBooks = (request, h) => {
   });
 
   if (name) {
-    name = name.toLowerCase()
+    name = name.toLowerCase();
     bookList = bookList.filter((book) =>
       book.name.toLowerCase().includes(name)
     );
   }
 
-  if (reading==0 || reading==1) {
-    if(reading==0){
-      reading=false
-    } else{
-      reading=true
+  if (reading == 0 || reading == 1) {
+    if (reading == 0) {
+      reading = false;
+    } else {
+      reading = true;
     }
     bookList = bookList.filter((book) => book.reading === reading);
   }
 
-  if (finished==0 || finished==1) {
+  if (finished == 0 || finished == 1) {
     if (finished == 0) {
       finished = false;
     } else {
@@ -106,7 +106,7 @@ const getAllBooks = (request, h) => {
 
   bookList = bookList.map((book) => {
     const { id, name, publisher } = book;
-  
+
     return { id, name, publisher };
   });
 
